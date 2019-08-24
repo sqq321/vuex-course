@@ -13,9 +13,9 @@ export default new Vuex.Store({
       { id: 3, tilte: "todo item 3", completed: true },
     ]
   },
-  //获取属性
+  //获取属性，不会更改状态
   getters: {
-    getCount: state => ++state.count,
+    getCount: state => state.count,
     // count(state) {
     //   return ++state.count;
     // },
@@ -33,15 +33,17 @@ export default new Vuex.Store({
     // getTodosById: function (state) {
     //   //处理东西
     //   (function (id) {
-    //     return state.todos.find(function (todo) {
-    //       return todo.id == id;
+    //     return state.todos.find(
+    //       function(todo) {
+    //          return todo.id == id;
     //     })
     //   })
     // }
   },
   //同步修改属性
   mutations: {
-
+    incrementCount: state => state.count++,
+    decrementCount: (state, payload) => state.count -= payload.amout,
   },
   //异步修改
   actions: {
