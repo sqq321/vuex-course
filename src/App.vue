@@ -2,10 +2,14 @@
   <div id="app">
     <!-- mutations -->
     <!-- <button @click="decrement({amout:2})">-</button> -->
-    <button @click="decrementCount({amout:2})">-</button>
+    <button @click="decrementCountAsync({amout:2})">-</button>
     <span>{{getCount}}</span>
     <!-- <button @click="increment">+</button> -->
-    <button @click="incrementCount">+</button>
+    <button @click="incrementCountAsync">+</button>
+
+    <hr />
+    <p>{{completedTodos}}</p>
+    <button @click="fetchDataAsync">FetchData</button>
 
     <!-- <p>App:{{count}}</p> -->
     <!-- <p>{{getCount}}</p>
@@ -18,7 +22,7 @@
 
 <script>
 import Count from "./components/Count";
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 export default {
   name: "app",
   components: {
@@ -67,18 +71,36 @@ export default {
   // },
 
   //-------------------mutations-------------
-  methods: mapMutations(["incrementCount", "decrementCount"])
+  //methods: mapMutations(["incrementCount", "decrementCount"]),
 
-  // methods: {
-  //   increment() {
-  //     //调用mutations 里的incrementCount
-  //     this.$store.commit("incrementCount");
-  //   },
+  //methods: {
+  // increment() {
+  //  //调用mutations 里的incrementCount
+  // this.$store.commit("incrementCount");
+  // },
   //   decrement(n) {
   //     //调用mutations 里的decrementCount
   //     this.$store.commit("decrementCount", n);
-  //   }
+  //  },
+
+  //---------------actions-------------------
+  methods: mapActions([
+    "incrementCountAsync",
+    "decrementCountAsync",
+    "fetchDataAsync"
+  ])
+  //incrementCount() {
+  //触发action
+  // this.$store.dispatch("incrementCountAsync");
   // },
+  //decrementCount(n) {
+  //this.$store.dispatch("decrementCountAsync", n);
+  // },
+  //------------------
+  // fetchData() {
+  //  this.$store.dispatch("fetchDataAsync");
+  // }
+  // }
 };
 </script>
 
