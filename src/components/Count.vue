@@ -13,15 +13,15 @@ import { mapState } from "vuex";
 export default {
   name: "count",
   components: {},
-  computed: mapState(["count", "todos"]),
-  computed: {
-    count() {
-      return this.$store.state.count; //main.js中的store
-    },
-    todos() {
-      return this.$store.state.todos;
-    }
-  }
+  computed: mapState(["count", "todos"])
+  //   computed: {
+  //     count() {
+  //       return this.$store.state.count; //main.js中的store
+  //     },
+  //     todos() {
+  //       return this.$store.state.todos;
+  //     }
+  //   }
 };
 </script>
 
